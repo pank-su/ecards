@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinxSerialization)
+
 }
 
 kotlin {
@@ -50,6 +52,9 @@ kotlin {
 
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
+            implementation(libs.koin.compose.viewmodel.navigation)
+
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

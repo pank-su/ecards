@@ -1,9 +1,0 @@
-package su.pank.ecards
-
-class Greeting {
-    private val platform = getPlatform()
-
-    fun greet(): String {
-        return "Hello, ${platform.name}!"
-    }
-}

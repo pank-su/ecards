@@ -21,6 +21,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.positionInWindow
@@ -28,9 +29,15 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 
+import kotlinx.serialization.Serializable
+
+@Serializable
+object Game
+
 @Composable
 fun Game() {
     Box() { // Maybe bg
+        //Image(painterResource(Res.drawable.gamebg), null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.FillWidth)
 
         val cards = remember { mutableStateListOf(Card(1), Card(2), Card(3), Card(4), Card(5)) }
         var polePosition: Offset? by remember { mutableStateOf(null) }
@@ -38,14 +45,14 @@ fun Game() {
         var placed by remember { mutableStateOf(Offset.Zero) }
 
         Row(modifier = Modifier.fillMaxSize()) {
-            Shop(modifier = Modifier.fillMaxHeight())
-            Column(modifier = Modifier.fillMaxWidth()) {
-                CardSelector(modifier = Modifier.fillMaxWidth(), isEnabled = false)
-                Pole(Modifier.fillMaxHeight(0.7f)) {
+            Shop(modifier = Modifier.weight(1f).fillMaxHeight())
+            Column(modifier = Modifier.weight(3f).fillMaxWidth()) {
+                CardSelector(modifier = Modifier.weight(1f).fillMaxWidth(), isEnabled = false)
+                Pole(Modifier.weight(2f)) {
                     polePosition = it.positionInWindow()
                     poleSize = it.size
                 }
-                CardSelector(modifier = Modifier.fillMaxWidth(), cards = cards) { offset, card ->
+                CardSelector(modifier = Modifier.weight(1f).fillMaxWidth(), cards = cards) { offset, card ->
                     println("$offset $polePosition $poleSize")
 
                     if (offset.y >= polePosition!!.y && offset.x >= polePosition!!.x && offset.y <= polePosition!!.y + poleSize!!.height && offset.x <= polePosition!!.x + poleSize!!.width) {
