@@ -33,7 +33,7 @@ fun Auth(userData: UserData? = null, onAuthComplete: () -> Unit,){
             AuthState.NeedLogin -> {
                 val uriHandler = LocalUriHandler.current
                 LaunchedEffect(Unit){
-                    openUrl(uriHandler,"https://pank-su.github.io/telegram-login-test/")
+                    //openUrl(uriHandler,"https://pank-su.github.io/telegram-login-test/")
                 }
                 Text("Перейдите по ссылке")
             }
