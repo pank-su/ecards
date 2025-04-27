@@ -38,6 +38,11 @@ kotlin {
     
     sourceSets {
         val desktopMain by getting
+
+        wasmJsMain.dependencies {
+            implementation("io.ktor:ktor-client-js:3.1.2")
+
+        }
         
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -60,10 +65,13 @@ kotlin {
             implementation(libs.supabase.postgrest)
             implementation(libs.supabase.auth)
             implementation(libs.supabase.realtime)
+            implementation(libs.supabase.functions)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation("io.ktor:ktor-client-java:3.1.2")
+
         }
     }
 }

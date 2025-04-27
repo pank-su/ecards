@@ -24,6 +24,7 @@ supabase-bom = {module = "io.github.jan-tennert.supabase:bom", version.ref ="sup
 supabase-postgrest = {module = "io.github.jan-tennert.supabase:postgrest-kt"}
 supabase-auth = {module = "io.github.jan-tennert.supabase:auth-kt"}
 supabase-realtime = {module = "io.github.jan-tennert.supabase:realtime-kt"}
+supabase-functions = {module =  "io.github.jan-tennert.supabase:functions-kt"}
 
 [plugins]
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
