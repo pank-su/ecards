@@ -11,9 +11,9 @@ fun main() {
 
     val query = window.location.search
 
-    val params = URLSearchParams(query as JsAny)
+    val params = URLSearchParams(query.toJsString())
 
-    println(params) // делаем запрос
+    println(query) // делаем запрос
 
 
     ComposeViewport(document.body!!) {

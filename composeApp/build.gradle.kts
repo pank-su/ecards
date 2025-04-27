@@ -55,6 +55,11 @@ kotlin {
             implementation(libs.koin.compose.viewmodel.navigation)
 
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
+            implementation(project.dependencies.platform(libs.supabase.bom))
+            implementation(libs.supabase.postgrest)
+            implementation(libs.supabase.auth)
+            implementation(libs.supabase.realtime)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
