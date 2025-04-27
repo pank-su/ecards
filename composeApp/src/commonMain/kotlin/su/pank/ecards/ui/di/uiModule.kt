@@ -7,9 +7,10 @@ import su.pank.ecards.ui.start.StartViewModel
 
 val uiModule = module {
     viewModel {
-        StartViewModel()
+        StartViewModel(get())
     }
     viewModel {
         AuthViewModel(it[0], get())
     }
+
 }

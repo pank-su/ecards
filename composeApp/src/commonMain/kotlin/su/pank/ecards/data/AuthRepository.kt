@@ -7,7 +7,12 @@ import io.github.jan.supabase.auth.user.UserSession
 import io.github.jan.supabase.functions.functions
 import io.ktor.client.call.body
 import io.ktor.http.isSuccess
+import kotlinx.coroutines.delay
 import su.pank.ecards.data.models.UserData
+import su.pank.ecards.data.models.UserWithSession
+import kotlin.time.Duration.Companion.seconds
+
+
 
 class AuthRepository(private val client: SupabaseClient)
 {
@@ -18,7 +23,8 @@ class AuthRepository(private val client: SupabaseClient)
     suspend fun authByUserData(userData: UserData){
         val resp = client.functions.invoke("verify-telegram", userData)
         if (resp.status.isSuccess()){
-            client.auth.importSession(resp.body<UserSession>())
+            val body = resp.body<UserWithSession>()
+            client.auth.importSession(body.session, )
         }
     }
 

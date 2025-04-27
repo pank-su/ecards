@@ -22,7 +22,9 @@ fun MainNav(userData: UserData? = null) {
             Game()
         }
         composable<Auth> {
-            Auth(userData) {  }
+            Auth(userData) {
+                navController.navigate(Start)
+            }
         }
     }
 }
